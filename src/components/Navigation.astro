@@ -1,16 +1,16 @@
 ---
-const currentPath = Astro.url.pathname;
+
 ---
 
 <li class="nav-item">
-  <a class={`nav-link${currentPath === '/' ? ' active' : ''}`} href="/">Inicio</a>
+  <a class={`nav-link${Astro.url.pathname === '/' ? ' active' : ''}`} href="/">Inicio</a>
 </li>
 <li class="nav-item">
-  <a class={`nav-link${currentPath === '/about' ? ' active' : ''}`} href="/about">Sobre mi</a>
+  <a class={`nav-link${Astro.url.pathname === '/about' ? ' active' : ''}`} href="/about">Sobre mi</a>
 </li>
 <li class="nav-item">
-  <a class={`nav-link${currentPath === '/blog' ? ' active' : ''}`} href="/blog">Blog</a>
+  <a class={`nav-link${Astro.url.pathname === '/blog' ? ' active' : ''}`} href="/blog">Blog</a>
 </li>
 <li class="nav-item">
-  <a class={`nav-link${currentPath === '/tags' ? ' active' : ''}`} href="/tags">Etiquetas</a>
+  <a class={`nav-link${Astro.url.pathname === '/tags' ? ' active' : ''}`} href="/tags">Etiquetas</a>
 </li>
