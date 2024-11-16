@@ -1,25 +1,36 @@
 ---
 import Social from "./Social.astro";
-
-const platform = "github";
-const username = "withastro";
 ---
 
+<footer
+  class="bg-body-tertiary d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom"
+>
+  <div class="col-md-4 d-flex align-items-center ms-4">
+    <a
+      href="/"
+      class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+    >
+      <img src="/img/header_logo_sun.png" width="40" class="sun" />
+      <img src="/img/header_logo_moon.png" width="40" class="moon" />
+    </a>
+    <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Astro, Inc</span>
+  </div>
+
+  <ul class="nav col-md-6 justify-content-end list-unstyled d-flex mx-3">
+    <Social platform="twitter" username="astrodotbuild" icon="twitter-x" />
+    <Social platform="github" username="withastro" icon="github" />
+    <Social platform="youtube" username="astrodotbuild" icon="youtube" />
+  </ul>
+</footer>
+
 <style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+  img.moon {
+    display: none;
+  }
+  :global(.dark) .sun {
+    display: none;
+  }
+  :global(.dark) .moon {
+    display: block;
   }
 </style>
-
-<footer>
-  <p>
-    ¡Más información sobre mis proyectos en <a
-      href={`https://www.${platform}.com/${username}`}>{platform}</a
-    >!
-  </p>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
-</footer>

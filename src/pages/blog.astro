@@ -5,26 +5,13 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
 const pageTitle = "Mi blog de Astro aprendizaje";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <BaseLayout pageTitle={pageTitle}>
-      <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-      <ul>
-        {
-          allPosts.map((post) => (
-            <BlogPost url={post.url} title={post.frontmatter.title} />
-          ))
-        }
-      </ul>
-    </BaseLayout>
-
-    <h1>Mi blog de Astro aprendizaje</h1>
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
+</BaseLayout>

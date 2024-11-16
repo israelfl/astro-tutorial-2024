@@ -1,14 +1,13 @@
 ---
-const { platform, username } = Astro.props;
+const { platform, username, icon } = Astro.props;
 ---
 
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
-
-<style>
-  a {
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #4c1d95;
-    text-decoration: none;
-  }
-</style>
+<li class="ms-3">
+  <a
+    class="text-body-secondary"
+    href={`https://www.${platform}.com/${username}`}
+    target="_blank"
+  >
+    <i class={`bi bi-${icon} border rounded p-2`}></i>
+  </a>
+</li>

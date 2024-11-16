@@ -1,10 +1,16 @@
 ---
-
+const currentPath = Astro.url.pathname;
 ---
 
-<div class="nav-links">
-  <a href="/">Inicio</a>
-  <a href="/about/">Sobre mi</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Etiquetas</a>
-</div>
+<li class="nav-item">
+  <a class={`nav-link${currentPath === '/' ? ' active' : ''}`} href="/">Inicio</a>
+</li>
+<li class="nav-item">
+  <a class={`nav-link${currentPath === '/about' ? ' active' : ''}`} href="/about">Sobre mi</a>
+</li>
+<li class="nav-item">
+  <a class={`nav-link${currentPath === '/blog' ? ' active' : ''}`} href="/blog">Blog</a>
+</li>
+<li class="nav-item">
+  <a class={`nav-link${currentPath === '/tags' ? ' active' : ''}`} href="/tags">Etiquetas</a>
+</li>
