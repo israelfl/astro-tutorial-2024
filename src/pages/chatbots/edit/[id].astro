@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { eq } from "astro:db";
+import { db, ChatbotsTable } from "astro:db";
+import dayjs from "dayjs";
+
+const pageTitle = "Chatbot Edit";
+const {id} = Astro.params;
+const chatbot = await db.select().from(ChatbotsTable).where(eq(ChatbotsTable.id, id));
+console.log('params', id, chatbot);
+
+if(Astro.request.method === "POST")
+{
+  const formData = await Astro.request.formData()
+  
+}
+
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  &nbsp;
+</BaseLayout>

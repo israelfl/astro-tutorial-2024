@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { db, ChatbotsTable } from "astro:db";
+import dayjs from "dayjs";
+
+const pageTitle = "Chatbots";
+const chatbots = await db.select().from(ChatbotsTable);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <a class="btn btn-primary" href="/chatbots/add">Nuevo Chatbot</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Steps</th>
+        <th>Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        chatbots.map((chatbot) => (
+          <tr>
+            <td>{chatbot.id}</td>
+            <td>{chatbot.title}</td>
+            <td>{chatbot.steps.length}</td>
+            <td>{dayjs(chatbot.created).format("YYYY-MM-DD HH:mm")}</td>
+            <td>
+              <a href={`/chatbots/edit/${chatbot.id}`}>Editar</a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { db, ChatbotsTable, NOW } from "astro:db";
+import { getNanoId } from "../../lib/nanoid";
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const id = getNanoId();
+  const title = formData.get("title");
+  const subtitle = formData.get("subtitle");
+  console.log("formData", formData, title, subtitle);
+
+  if (
+    typeof id === "string" &&
+    typeof title === "string" &&
+    typeof subtitle === "string"
+  )
+    await db.insert(ChatbotsTable).values({
+      id,
+      title,
+      subtitle,
+    });
+}
+const pageTitle = "Chatbot Add";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <form method="post" class="form">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        name="title"
+        class="form-control"
+        id="floatingTitle"
+        placeholder="Title"
+      />
+      <label for="floatingTitle">Title</label>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea
+        name="subtitle"
+        class="form-control"
+        id="floatingSubtitle"
+        placeholder="Password"
+        style="height: 100px"></textarea>
+      <label for="floatingSubtitle">Subtitle</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</BaseLayout>
